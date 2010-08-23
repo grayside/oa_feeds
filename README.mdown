@@ -6,6 +6,7 @@ activity). This module is not related to the Feeds module or the Atrium Reader f
 ## Where to Go To See Something
 1. Visit a user's profile. There is a block there.
 2. Customize the dashboard adding OA Feeds blocks.
+3. http://example.com/dashboard/all/feed
 
 ## Architecture
 
