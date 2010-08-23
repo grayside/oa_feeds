@@ -3,6 +3,10 @@
 OA Feeds provides *outgoing* RSS feeds for Open Atrium. Currently supporting the dashboard (Recent 
 activity). This module is not related to the Feeds module or the Atrium Reader feature. 
 
+## Requirements
+Requires custom Views handlers, currently only available via my fork of atrium_features. They will be duplicated into this 
+project soon.
+
 ## Where to Go To See Something
 1. Visit a user's profile. There is a block there.
 2. Customize the dashboard adding OA Feeds blocks.
@@ -22,8 +26,7 @@ Please be aware that using this feature means a plaintext string will be availab
 Readers of all users canny enough to pursue RSS notifications. Google could learn node titles, 
 group names, and so on.
 
-If such information is sensitive on your Open Atrium site, *DO NOT USE THIS
-FEATURE*.
+If such information is sensitive on your Open Atrium site, *DO NOT USE THIS FEATURE*.
 
 ### Resetting the Secure Token
 If you are comfortable using this module, but are still concerned about malicious people
