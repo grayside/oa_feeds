@@ -1,0 +1,67 @@
+# OA Feeds
+
+OA Feeds provides *outgoing* RSS feeds for Open Atrium. Currently supporting the dashboard (Recent 
+activity). This module is not related to the Feeds module or the Atrium Reader feature. 
+
+## Where to Go To See Something
+1. Visit a user's profile. There is a block there.
+2. Customize the dashboard adding OA Feeds blocks.
+
+## Architecture
+
+OA Feeds leverages the tokenauth module (preferrably 6.x-1.x-dev 2010-08-17) to grant users with 
+the 'access tokenauth' permission a 23-character alphanumeric token that will identify them to Open 
+Atrium so that the posts visible to their user account are accessible via the RSS feed, even though 
+they are not formally logged in to the site. In this way, the Recent activity a user wants to see 
+from Atrium can be pulled directly into Google Reader or their Reader of choice (including Atrium 
+Reader!).
+
+## Security Caution
+
+Please be aware that using this feature means a plaintext string will be available in the Feed 
+Readers of all users canny enough to pursue RSS notifications. Google could learn node titles, 
+group names, and so on.
+
+If such information is sensitive on your Open Atrium site, *DO NOT USE THIS
+FEATURE*.
+
+### Resetting the Secure Token
+If you are comfortable using this module, but are still concerned about malicious people
+getting ahold of a token and "stalking" your content, there is a global token reset
+mechanism located at admin/settings/tokenauth. Furthermore, every user profile page
+has a token reset button specific to that user. Administrators with 'administer
+users' permission have access to this button, along with the user it is associated
+with.
+
+You are still responsible for communicating the token reset to your users.
+
+(For your convenience, Token Authentication now provides drush commands for token reset, too.)
+
+### Tokenauth Settings
+Be extra careful in considering which users should have access to the 'administrate
+tokenauth' permission. Tokenauth Administrators have the ability change the Drupal
+paths for which tokenauth will provide plaintext authentication. If something like
+`node/*` were added to this configuration, you would allow anyone with access to a token
+associated with a user with content creation permission to add content to your site.
+
+You could also create security holes by granting access to `admin/*`.
+
+Such things are contra-indicated.
+
+## Less Visible Features
+
+This feature adds another block "RSS Feeds for Current Space" which you may enable as
+a dashboard block at admin/settings/dashboard. This block displays a link customized
+for the current user to the dashboard feed along with that user's token.
+
+This block will be updated with additional links if and when more are supported by
+this Feature.
+
+## FAQ
+
+Q. Why is the Token 23 characters long?
+A. I thought it a good balance between avoiding a memorizable length and being a URL of silly
+size. You may change this setting as you like with that in mind.
+
+## Maintainer
+Adam B. Ross, grayside.org
