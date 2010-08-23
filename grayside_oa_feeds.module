@@ -171,6 +171,6 @@ function grayside_oa_feeds_theme($existing) {
 function grayside_oa_feeds_views_api() {
   return array(
     'api' => 2,
-    'path' => drupal_get_path('module', 'grayside_oa_views_bonus_pack') .'/includes',
+    'path' => drupal_get_path('module', 'grayside_oa_feeds') .'/includes',
   );
 }
