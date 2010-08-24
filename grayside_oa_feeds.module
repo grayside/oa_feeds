@@ -111,7 +111,7 @@ function _grayside_oa_feeds_space_block_content() {
  * Add oa_feeds_tokenauth block to user profile context.
  */
 function grayside_oa_feeds_context_load_alter(&$context) {
-  if ($context->name == 'atrium_profile') {
+  if ($context->name == 'activity_profile') {
     $block = array(
       'grayside_oa_feeds-oa_feeds_tokenauth' => array(
         'module' => 'grayside_oa_feeds',

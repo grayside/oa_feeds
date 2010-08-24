@@ -1,21 +1,9 @@
 <?php
 
 /**
- * Helper to implementation of hook_ctools_plugin_api().
+ * Implementation of hook_strongarm().
  */
-function _grayside_oa_feeds_ctools_plugin_api() {
-  $args = func_get_args();
-  $module = array_shift($args);
-  $api = array_shift($args);
-  if ($module == "strongarm" && $api == "strongarm") {
-    return array("version" => 1);
-  }
-}
-
-/**
- * Helper to implementation of hook_strongarm().
- */
-function _grayside_oa_feeds_strongarm() {
+function grayside_oa_feeds_strongarm() {
   $export = array();
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -38,7 +26,6 @@ function _grayside_oa_feeds_strongarm() {
   $strongarm->value = array(
     'body' => 'These feeds use part of the URL to log you into your account for limited purposes.
 If your URL \'token\' has been stolen press the reset button to get a new token. ',
-    'format' => '5',
   );
 
   $export['tokenauth_text'] = $strongarm;

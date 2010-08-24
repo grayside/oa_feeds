@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Helper to implementation of hook_views_default_views().
+ * Implementation of hook_views_default_views().
  */
-function _grayside_oa_feeds_views_default_views() {
+function grayside_oa_feeds_views_default_views() {
   $views = array();
 
   // Exported view: oa_feeds_dashboard
