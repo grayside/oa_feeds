@@ -34,12 +34,14 @@ function grayside_oa_feeds_block($op = 'list', $delta = 0, $edit = array()) {
       $block = array();
       switch($delta) {
         case 'oa_feeds_tokenauth':
-          if (arg(0) == 'user' && is_numeric(arg(1))) {
-            $account = user_load(arg(1));
+          $space = spaces_get_space();
+          if ($space->type == 'user') {
+            $account = user_load($space->id);
           }
           else {
             break;
           }
+
           // If the user does not have access to tokenauth do not show this block.
           if (tokenauth_profile_access($GLOBALS['user'])) {
             $block['subject'] = t('!account\'s RSS Feeds', array('!account' => $account->name));
@@ -57,32 +59,18 @@ function grayside_oa_feeds_block($op = 'list', $delta = 0, $edit = array()) {
   }
 }
 
-/**
- * Provides content for oa_feeds_tokenauth block.
- */
 function _grayside_oa_feeds_tokenauth_block_content(&$form_state, $account) {
-  global $user;
-
-  $token = tokenauth_get_token($account->uid);
-
-  // The user does not have tokenauth access, inform the administrators.
-  if (!user_access('access tokenauth', $account)) {
-    $form['denied'] = array(
-      '#value' => t('This user does not have access to tokenauth.'),
-    );
-    $form = array_merge($form, _grayside_oa_feeds_reset_token_form($account, $token, t('Reset token anyway')));
-    return $form;
-  }
+  $form = array();
 
   // Prepare a couple sample links to token-authenticated feeds.
   $items = array();
+  $token = tokenauth_get_token($account->uid);
   $items[] = l(theme('image', 'misc/feed.png', t('Syndicate content'), t('My dashboard')) . ' ' . t('My dashboard'),
     'dashboard/feed', array(
-      'query' => 'token=' . $token, 
+      'query' => 'token=' . $token,
       'html' => TRUE
     )
   );
-
   $group = array_shift(array_values($account->og_groups));
   $group_text = t('Example: My !title group dashboard', array('!title' => $group['title']));
   $items[] = l(theme('image', 'misc/feed.png', t('Syndicate content'), $group_text) . ' ' . $group_text,
@@ -93,15 +81,10 @@ function _grayside_oa_feeds_tokenauth_block_content(&$form_state, $account) {
     )
   );
 
-  $output = theme('item_list', $items);
-  $output .= '<p>' . t('These feeds use part of the URL to log you into your account for limited purposes.');
-  $output .= t('If your URL \'token\' has been compromised, press the reset button to get a new token.') . '</p>';
-
-  $form = array();
-  $form['preamble'] = array('#value' => $output);
-  $form = array_merge($form, tokenauth_reset_user_form($account->uid, $token));
-  
-  return $form;
+  $form['preamble'] = array(
+    '#value' => theme('item_list', $items) . tokenauth_text_load($account, TRUE),
+  );
+  return array_merge($form, tokenauth_reset_user_form($account->uid));
 }
 
 /**

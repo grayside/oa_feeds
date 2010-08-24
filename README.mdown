@@ -5,7 +5,7 @@ activity). This module is not related to the Feeds module or the Atrium Reader f
 
 ## Where to Go To See Something
 1. Visit a user's profile. There is a block there.
-2. Customize the dashboard adding OA Feeds blocks.
+2. Customize the dashboard at admin/settings/dashboard adding OA Feeds blocks.
 3. http://example.com/dashboard/all/feed
 
 ## Architecture
@@ -59,9 +59,13 @@ this Feature.
 
 ## FAQ
 
-Q. Why is the Token 23 characters long?
-A. I thought it a good balance between avoiding a memorizable length and being a URL of silly
+### Q. Why is the Token 23 characters long?
+**A.** I thought it a good balance between avoiding a memorizable length and being a URL of silly
 size. You may change this setting as you like with that in mind.
+
+## To-dos
+
+* Instead of creating a new view, hook_alter() the initial RSS feed into the existing atrium_intranet view.
 
 ## Maintainer
 Adam B. Ross, grayside.org
