@@ -9,3 +9,12 @@ function grayside_oa_feeds_ctools_plugin_api() {
     return array("version" => 1);
   }
 }
+
+/**
+ * Implementation of hook_views_api().
+ */
+function grayside_oa_feeds_views_api() {
+  return array(
+    'api' => '2',
+  );
+}
