@@ -1,0 +1,8 @@
+core = "6.x"
+dependencies[] = "features"
+dependencies[] = "grayside_oa_feeds"
+dependencies[] = "optionwidgets"
+dependencies[] = "text"
+description = "Allows individual groups to opt-in to the RSS feeds of the site."
+features[content][] = "group-field_oa_feeds_allowed"
+name = "OA Feeds [Optional]"
