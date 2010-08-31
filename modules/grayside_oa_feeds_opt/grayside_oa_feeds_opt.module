@@ -6,6 +6,8 @@
  *  Allows groups the option to opt-in to the site's outgoing RSS feed provided by OA Feeds module.
  */
 
+include_once('grayside_oa_feeds_opt.features.inc');
+
 /**
  * Implementation of hook_views_api().
  */
