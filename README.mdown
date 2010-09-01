@@ -18,12 +18,11 @@ activity). This module is not related to the Feeds module or the Atrium Reader f
 
 ## Architecture
 
-OA Feeds leverages the tokenauth module (preferrably 6.x-1.x-dev 2010-08-17) to grant users with 
-the 'access tokenauth' permission a 23-character alphanumeric token that will identify them to Open 
-Atrium so that the posts visible to their user account are accessible via the RSS feed, even though 
-they are not formally logged in to the site. In this way, the Recent activity a user wants to see 
-from Atrium can be pulled directly into Google Reader or their Reader of choice (including Atrium 
-Reader!).
+OA Feeds leverages the tokenauth module (6.x-1.5 and newer) to grant users with the 'access tokenauth'
+permission a 23-character alphanumeric token that will identify them to Open Atrium so that the posts
+visible to their user account are accessible via the RSS feed, even though they are not formally logged
+in to the site. In this way, the Recent activity a user wants to see from Atrium can be pulled directly
+into Google Reader or their Reader of choice (including Atrium Reader!).
 
 ## Security Caution
 
