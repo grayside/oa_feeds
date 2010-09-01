@@ -126,9 +126,23 @@ function grayside_oa_feeds_context_load_alter(&$context) {
 
 /**
  * Implementation of hook_strongarm_alter().
- * Not working?
  */
 function grayside_oa_feeds_strongarm_alter(&$arms) {
   $arms['spaces_dashboard_blocks']->value['grayside_oa_feeds-oa_feeds_tokenauth'] = 1;
   $arms['spaces_dashboard_blocks']->value['grayside_oa_feeds-oa_feeds_space'] = 1;
+}
+
+/**
+ * Implementation of hook_theme().
+ * Add the html-stripped version of the atrium activity field to the module.
+ */
+function grayside_oa_feeds_theme($existing) {
+  return array(
+    'views_view_field__oa_feeds_dashboard__atrium_activity' => array(
+      'arguments' => array('view' => NULL, 'field' => NULL, 'row' => NULL),
+      'template' => 'views-view-field--oa-feeds-dashboard--atrium-activity',
+      'original hook' => 'views_view_field',
+      'path' => drupal_get_path('module', 'grayside_oa_feeds') . '/theme',
+    ),
+  );
 }

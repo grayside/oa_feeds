@@ -74,6 +74,7 @@ size. You may change this setting as you like with that in mind.
 ## To-dos
 
 * Instead of creating a new view, hook_alter() the initial RSS feed into the existing atrium_intranet view.
+* Instead of the theme template replacement, add a strip tags option to the Activity Field handler.
 
 ## Maintainer
 Adam B. Ross, grayside.org
