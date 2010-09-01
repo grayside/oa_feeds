@@ -64,6 +64,11 @@ for the current user to the dashboard feed along with that user's token.
 This block will be updated with additional links if and when more are supported by
 this Feature.
 
+## Available Feeds
+
+* **dashboard/feed**: Recent activity. RSS clone of atrium_intranet.
+* **reader/feed**: Atrium Reader items. Use the Atrium Reader feature like a Yahoo Pipe.
+
 ## FAQ
 
 ### Q. Why is the Token 23 characters long?

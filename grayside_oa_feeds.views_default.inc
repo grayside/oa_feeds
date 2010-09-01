@@ -691,5 +691,296 @@ function grayside_oa_feeds_views_default_views() {
 
   $views[$view->name] = $view;
 
+  // Exported view: oa_feeds_reader
+  $view = new view;
+  $view->name = 'oa_feeds_reader';
+  $view->description = 'Atrium Reader > Feed';
+  $view->tag = 'atrium';
+  $view->view_php = '';
+  $view->base_table = 'feeds_data_feed_reader';
+  $view->is_cacheable = FALSE;
+  $view->api_version = 2;
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->override_option('relationships', array(
+    'feed_nid' => array(
+      'label' => 'feeds_data_feed_reader.feed_nid -> node.nid',
+      'required' => 0,
+      'id' => 'feed_nid',
+      'table' => 'feeds_data_feed_reader',
+      'field' => 'feed_nid',
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('fields', array(
+    'title' => array(
+      'label' => 'Title',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'feeds_data_feed_reader',
+      'field' => 'title',
+      'relationship' => 'none',
+    ),
+    'author' => array(
+      'label' => 'Author',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 0,
+      'id' => 'author',
+      'table' => 'feeds_data_feed_reader',
+      'field' => 'author',
+      'relationship' => 'none',
+    ),
+    'options_original_url' => array(
+      'label' => 'Options original url',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 0,
+      'id' => 'options_original_url',
+      'table' => 'feeds_data_feed_reader',
+      'field' => 'options_original_url',
+      'relationship' => 'none',
+    ),
+    'options_raw_guid' => array(
+      'label' => 'Options raw guid',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 0,
+        'ellipsis' => 0,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 0,
+      'id' => 'options_raw_guid',
+      'table' => 'feeds_data_feed_reader',
+      'field' => 'options_raw_guid',
+      'relationship' => 'none',
+    ),
+    'timestamp' => array(
+      'label' => 'Timestamp',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 0,
+        'ellipsis' => 0,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'date_format' => 'small',
+      'custom_date_format' => '',
+      'reldate' => '0',
+      'exclude' => 0,
+      'id' => 'timestamp',
+      'table' => 'feeds_data_feed_reader',
+      'field' => 'timestamp',
+      'relationship' => 'none',
+    ),
+    'description' => array(
+      'label' => 'Description',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'truncate' => '',
+      'filter_html' => '0',
+      'allowed_tags' => '',
+      'exclude' => 0,
+      'id' => 'description',
+      'table' => 'feeds_data_feed_reader',
+      'field' => 'description',
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'current' => array(
+      'operator' => '=',
+      'value' => '',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'current',
+      'table' => 'spaces',
+      'field' => 'current',
+      'relationship' => 'feed_nid',
+    ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'feed_nid',
+    ),
+  ));
+  $handler->override_option('access', array(
+    'type' => 'spaces_feature',
+    'spaces_feature' => 'atrium_reader',
+    'perm' => 'access content',
+  ));
+  $handler->override_option('cache', array(
+    'type' => 'none',
+  ));
+  $handler->override_option('title', 'Reader News');
+  $handler = $view->new_display('feed', 'Feed', 'feed_1');
+  $handler->override_option('style_plugin', 'rss_fields');
+  $handler->override_option('style_options', array(
+    'mission_description' => FALSE,
+    'description' => array(
+      'feed_description' => 'The posts below are pulled from external sources of interest.',
+    ),
+    'fields' => array(
+      'title' => 'title',
+      'description' => 'description',
+      'link' => 'options_original_url',
+      'author' => '',
+      'dc:creator' => 'author',
+      'category' => '',
+      'guid' => 'options_raw_guid',
+      'pubDate' => 'timestamp',
+    ),
+    'georss' => array(
+      'lat' => '',
+      'lon' => '',
+      'featureName' => '',
+    ),
+  ));
+  $handler->override_option('row_plugin', '');
+  $handler->override_option('path', 'reader/feed');
+  $handler->override_option('menu', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('tab_options', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('displays', array());
+  $handler->override_option('sitename_title', FALSE);
+  $translatables['oa_feeds_reader'] = array(
+    t('Defaults'),
+    t('Feed'),
+    t('Reader News'),
+  );
+
+  $views[$view->name] = $view;
+
   return $views;
 }
