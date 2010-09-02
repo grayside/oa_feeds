@@ -4,7 +4,7 @@ OA Feeds provides *outgoing* RSS feeds for Open Atrium.
 
 ### This Feature currently supports:
  * Recent activity at *dashboard/feed*. (Group activity at *[group shortname]/dashboard/feed*)
- * Atrium Reader posts at *reader/feed*. (Group activity at *[group shortname]/reader/feed*)
+ * [Atrium Reader](http://code.developmentseed.org/atrium_reader/node/245) posts at *reader/feed*. (Group activity at *[group shortname]/reader/feed*)
    * Category-specific by appending the category: news, twitter, images.
  * More soon!
 
@@ -13,7 +13,7 @@ only that of passing content onward.
 
 ## Installation
 1. Get this Feature.
-2. Get views_rss. For proper activity path handling, get [this patch](http://drupal.org/node/589904#comment-3394232).
+2. Get [Views RSS](http://drupal.org/project/views_rss). For proper activity path handling, get [this patch](http://drupal.org/node/589904#comment-3394232).
 
 ## Configuration
 Set the Site Mission Statement in admin/settings/site-information. This is used as the 
@@ -21,7 +21,7 @@ Feed Description.
 
 ## Architecture
 
-OA Feeds leverages the tokenauth module (6.x-1.5 and newer) to grant users with the 
+OA Feeds leverages the [Token Authentication](http://drupal.org/project/tokenauth) module (6.x-1.5 and newer) to grant users with the 
 'access tokenauth' permission a 23-character alphanumeric token that will identify them 
 to Open Atrium so that the posts visible to their user account are accessible via the 
 RSS feed, even though they are not formally logged in to the site. In this way, the 
@@ -36,8 +36,8 @@ group names, and so on.
 
 If such information is sensitive on your Open Atrium site, *DO NOT USE THIS FEATURE*.
 
-If such information is sensitive on a group-by-group basis, check out the OA Feeds 
-[Optional] module that is packaged in the modules directory of this project. It adds a 
+If such information is sensitive on a group-by-group basis, check out the **OA Feeds 
+[Optional]** module that is packaged in the modules directory of this project. It adds a 
 toggle to every group allowing them to opt-in to site RSS feeds on an individual basis.
 
 ### Resetting the Secure Token
@@ -79,6 +79,10 @@ every user profile page, along with a couple example links to recent activity fe
 ### Q. Why is the Token 23 characters long?
 **A.** I thought it a good balance between avoiding a memorizable length and being a URL 
 of silly size. You may change this setting as you like with that in mind.
+
+### Q. Why is this not in Atrium Core?
+**A.** This project aims to be a stepping stone to achieve that. Hopefully most of it 
+will migrate into one of the next few releases.
 
 ## To-dos
 
