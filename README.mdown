@@ -86,7 +86,7 @@ will migrate into one of the next few releases.
 
 ## To-dos
 
-* Instead of creating new views, hook_alter() the relevant displays onto existing Views.
+* Instead of creating new views, [hook_alter() the relevant displays onto existing Views](http://github.com/grayside/oa_feeds/issues#issue/1).
 * Instead of the theme template replacement, add a strip tags option to the Activity 
 Field handler.
 * [Support iCal with Views Datasource module](http://github.com/grayside/oa_feeds/issues#issue/2)
