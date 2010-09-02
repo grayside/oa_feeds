@@ -2,7 +2,7 @@
 
 OA Feeds provides *outgoing* RSS feeds for Open Atrium.
 
-This Feature currently supports:
+### This Feature currently supports:
  * Recent activity at *dashboard/feed*. (Group activity at *[group shortname]/dashboard/feed*)
  * Atrium Reader posts at *reader/feed*. (Group activity at *[group shortname]/reader/feed*)
    * Category-specific by appending the category: news, twitter, images.
