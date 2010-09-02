@@ -133,6 +133,15 @@ function grayside_oa_feeds_strongarm_alter(&$arms) {
 }
 
 /**
+ * Implementation of hook_views_default_views_alter().
+ */
+function grayside_oa_feeds_views_default_views_alter(&$views) {
+  if (!module_exists('atrium_reader')) {
+    unset($views['oa_feeds_reader']);
+  }
+}
+
+/**
  * Implementation of hook_theme().
  * Add the html-stripped version of the atrium activity field to the module.
  */
