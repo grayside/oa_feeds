@@ -284,6 +284,7 @@ function grayside_oa_feeds_views_default_views() {
       'table' => 'comments',
       'field' => 'atrium_activity_id',
       'relationship' => 'none',
+      'guid' => 1,
     ),
   ));
   $handler->override_option('filters', array(
@@ -337,7 +338,9 @@ function grayside_oa_feeds_views_default_views() {
     ),
   ));
   $handler->override_option('cache', array(
-    'type' => 'none',
+    'type' => 'time',
+    'results_lifespan' => '60',
+    'output_lifespan' => '60',
   ));
   $handler->override_option('title', 'Recent activity');
   $handler->override_option('empty', 'No recent activity found.');
@@ -640,6 +643,10 @@ function grayside_oa_feeds_views_default_views() {
       'table' => 'comments',
       'field' => 'atrium_activity_id',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'guid' => 1,
     ),
   ));
   $handler->override_option('style_plugin', 'rss_fields');
@@ -894,6 +901,75 @@ function grayside_oa_feeds_views_default_views() {
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('arguments', array(
+    'field_reader_feedtype_value' => array(
+      'default_action' => 'ignore',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'All',
+      'title' => 'Reader Feed for %1',
+      'breadcrumb' => '',
+      'default_argument_type' => 'fixed',
+      'default_argument' => '',
+      'validate_type' => 'none',
+      'validate_fail' => 'not found',
+      'glossary' => 0,
+      'limit' => '0',
+      'case' => 'none',
+      'path_case' => 'none',
+      'transform_dash' => 0,
+      'id' => 'field_reader_feedtype_value',
+      'table' => 'node_data_field_reader_feedtype',
+      'field' => 'field_reader_feedtype_value',
+      'relationship' => 'feed_nid',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+        '3' => 0,
+        '4' => 0,
+      ),
+      'default_options_div_prefix' => '',
+      'default_argument_fixed' => '',
+      'default_argument_user' => 0,
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'blog' => 0,
+        'book' => 0,
+        'event' => 0,
+        'feed_ical' => 0,
+        'feed_ical_item' => 0,
+        'group' => 0,
+        'profile' => 0,
+        'shoutbox' => 0,
+        'feed_reader' => 0,
+        'presentation' => 0,
+        'webform' => 0,
+        'casetracker_basic_case' => 0,
+        'casetracker_basic_project' => 0,
+        'crowd_qa_answer' => 0,
+        'crowd_qa_question' => 0,
+        'meeting_agenda' => 0,
+      ),
+      'validate_argument_node_access' => 0,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(
+        '1' => 0,
+        '2' => 0,
+      ),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_is_member' => 'OG_VIEWS_DO_NOT_VALIDATE_MEMBERSHIP',
+      'validate_argument_group_node_type' => array(
+        'group' => 0,
+      ),
+      'validate_argument_php' => '',
+      'override' => array(
+        'button' => 'Override',
+      ),
+    ),
+  ));
   $handler->override_option('filters', array(
     'current' => array(
       'operator' => '=',
@@ -932,7 +1008,7 @@ function grayside_oa_feeds_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('title', 'Reader News');
+  $handler->override_option('title', 'Reader Feed');
   $handler = $view->new_display('feed', 'Feed', 'feed_1');
   $handler->override_option('style_plugin', 'rss_fields');
   $handler->override_option('style_options', array(
@@ -973,11 +1049,11 @@ function grayside_oa_feeds_views_default_views() {
     'name' => 'navigation',
   ));
   $handler->override_option('displays', array());
-  $handler->override_option('sitename_title', FALSE);
+  $handler->override_option('sitename_title', 0);
   $translatables['oa_feeds_reader'] = array(
     t('Defaults'),
     t('Feed'),
-    t('Reader News'),
+    t('Reader Feed'),
   );
 
   $views[$view->name] = $view;
