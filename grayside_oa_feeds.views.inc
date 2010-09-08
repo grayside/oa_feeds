@@ -13,6 +13,9 @@ function grayside_oa_feeds_views_handlers() {
       'grayside_oa_feeds_handler_field_activity_id' => array(
         'parent' => 'atrium_activity_handler_field_activity',
       ),
+      'grayside_oa_feeds_handler_field_activity_description' => array(
+        'parent' => 'views_handler_field_markup',
+      ),
     ),
   ); 
 }
@@ -28,5 +31,16 @@ function grayside_oa_feeds_views_data() {
     'help' => t("Unique ID for a poor man's activity."),
     'field' => array('handler' => 'grayside_oa_feeds_handler_field_activity_id'),
   );
+  $data['node_revisions']['atrium_activity_teaser'] = array(
+    'group' => t('Comment'),
+    'real field' => 'teaser',
+    'title' => t('Activity description'),
+    'help' => t("Description of a poor man's activity."),
+    'field' => array(
+      'handler' => 'grayside_oa_feeds_handler_field_activity_description',
+      'format' => 'format',
+    ),
+  ); 
+
   return $data;
 }

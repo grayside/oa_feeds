@@ -130,8 +130,8 @@ function grayside_oa_feeds_views_default_views() {
     'title' => array(
       'label' => 'Description',
       'alter' => array(
-        'alter_text' => 1,
-        'text' => 'From the [title] group.',
+        'alter_text' => 0,
+        'text' => '',
         'make_link' => 0,
         'path' => '',
         'link_class' => '',
@@ -151,7 +151,11 @@ function grayside_oa_feeds_views_default_views() {
       'hide_empty' => 0,
       'empty_zero' => 0,
       'link_to_node' => 0,
-      'exclude' => 0,
+      'spaces' => array(
+        'frontpage' => 0,
+        'type' => 'spaces_og',
+      ),
+      'exclude' => 1,
       'id' => 'title',
       'table' => 'node',
       'field' => 'title',
@@ -285,6 +289,38 @@ function grayside_oa_feeds_views_default_views() {
       'field' => 'atrium_activity_id',
       'relationship' => 'none',
       'guid' => 1,
+    ),
+    'atrium_activity_teaser' => array(
+      'label' => 'Activity description',
+      'alter' => array(
+        'alter_text' => 1,
+        'text' => '[atrium_activity_teaser]
+
+<em>From the [title] group.</em>',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'restricted' => '1',
+      'exclude' => 0,
+      'id' => 'atrium_activity_teaser',
+      'table' => 'node_revisions',
+      'field' => 'atrium_activity_teaser',
+      'relationship' => 'none',
     ),
   ));
   $handler->override_option('filters', array(
@@ -487,9 +523,9 @@ function grayside_oa_feeds_views_default_views() {
       ),
     ),
     'title' => array(
-      'label' => 'Description',
+      'label' => '',
       'alter' => array(
-        'alter_text' => 1,
+        'alter_text' => 0,
         'text' => 'From the [title] group.',
         'make_link' => 0,
         'path' => '',
@@ -510,13 +546,17 @@ function grayside_oa_feeds_views_default_views() {
       'hide_empty' => 0,
       'empty_zero' => 0,
       'link_to_node' => 0,
-      'exclude' => 0,
+      'spaces' => array(
+        'frontpage' => 0,
+        'type' => 'spaces_og',
+      ),
+      'exclude' => 1,
       'id' => 'title',
       'table' => 'node',
       'field' => 'title',
       'relationship' => 'group_nid',
       'override' => array(
-        'button' => 'Override',
+        'button' => 'Use default',
       ),
     ),
     'mail' => array(
@@ -648,6 +688,41 @@ function grayside_oa_feeds_views_default_views() {
       ),
       'guid' => 1,
     ),
+    'atrium_activity_teaser' => array(
+      'label' => 'Description',
+      'alter' => array(
+        'alter_text' => 1,
+        'text' => '[atrium_activity_teaser]
+
+<em>From the [title] group.</em>',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'restricted' => '1',
+      'exclude' => 0,
+      'id' => 'atrium_activity_teaser',
+      'table' => 'node_revisions',
+      'field' => 'atrium_activity_teaser',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('style_plugin', 'rss_fields');
   $handler->override_option('style_options', array(
@@ -657,7 +732,7 @@ function grayside_oa_feeds_views_default_views() {
     ),
     'fields' => array(
       'title' => 'atrium_activity',
-      'description' => 'title',
+      'description' => 'atrium_activity_teaser',
       'link' => 'atrium_activity_path',
       'author' => 'mail',
       'dc:creator' => 'atrium_activity_user',
