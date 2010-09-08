@@ -36,14 +36,14 @@ class grayside_oa_feeds_handler_field_activity_description extends views_handler
    */
   function construct() {
     parent::construct();
-    $this->additional_fields['og_public'] = array('table' => 'og_access_post', 'field' => 'og_public');
+    $this->additional_fields['node_nid'] = array('table' => 'node', 'field' => 'nid');
   }
 
   function render($values) {
     // Warning: This is a really bad replacement for an actual access check.
     if ($this->options['restricted']
-      && !variable_get('user_register', 0)
-      && $values->{$this->aliases['og_public']}) {
+      && variable_get('user_register', 0)
+      && node_access('view', node_load($values->{$this->aliases['node_nid']}), drupal_anonymous_user())) {
         return parent::render($values);
     }
     elseif (!$this->options['restricted']) {
