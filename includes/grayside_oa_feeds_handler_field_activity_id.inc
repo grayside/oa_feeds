@@ -37,11 +37,11 @@ class grayside_oa_feeds_handler_field_activity_id extends atrium_activity_handle
   function render($value) {
     // Has comments
     if (!empty($value->{$this->field_alias})) {
-      $id = $value->{$this->aliases['nid']} . ':' . $value->{$this->aliases['comment_cid']};
+      $id = $value->{$this->aliases['nid']} . ':c' . $value->{$this->aliases['comment_cid']};
     }
     // No comments
     else {
-      $id = $value->{$this->aliases['nid']} . ':' . $value->{$this->aliases['node_revision']};
+      $id = $value->{$this->aliases['nid']} . ':r' . $value->{$this->aliases['node_revision']};
     }
     if ($this->options['guid']) {
       $id .= ' at ' . $GLOBALS['base_url'];
