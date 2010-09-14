@@ -100,7 +100,7 @@ function grayside_oa_feeds_views_default_views() {
       ),
     ),
     'atrium_activity' => array(
-      'label' => '',
+      'label' => 'Activity Title',
       'alter' => array(
         'alter_text' => FALSE,
         'text' => '',
@@ -110,6 +110,7 @@ function grayside_oa_feeds_views_default_views() {
         'link_class' => '',
         'prefix' => '',
         'suffix' => '',
+        'target' => '',
         'trim' => FALSE,
         'max_length' => '',
         'word_boundary' => TRUE,
@@ -117,6 +118,9 @@ function grayside_oa_feeds_views_default_views() {
         'strip_tags' => FALSE,
         'html' => FALSE,
       ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
       'time_horizon' => '30',
       'exclude' => 0,
       'id' => 'atrium_activity',
@@ -128,7 +132,7 @@ function grayside_oa_feeds_views_default_views() {
       ),
     ),
     'title' => array(
-      'label' => 'Description',
+      'label' => '',
       'alter' => array(
         'alter_text' => 0,
         'text' => '',
@@ -291,7 +295,7 @@ function grayside_oa_feeds_views_default_views() {
       'guid' => 1,
     ),
     'atrium_activity_teaser' => array(
-      'label' => 'Activity description',
+      'label' => 'Description',
       'alter' => array(
         'alter_text' => 1,
         'text' => '[atrium_activity_teaser]
@@ -420,7 +424,7 @@ function grayside_oa_feeds_views_default_views() {
     ),
     'default' => '-1',
   ));
-  $handler = $view->new_display('feed', 'Feed', 'feed_1');
+  $handler = $view->new_display('feed', 'Feed [Recent]', 'feed_1');
   $handler->override_option('fields', array(
     'feature' => array(
       'label' => 'Spaces feature',
@@ -764,9 +768,136 @@ function grayside_oa_feeds_views_default_views() {
   ));
   $handler->override_option('displays', array());
   $handler->override_option('sitename_title', FALSE);
+  $handler = $view->new_display('feed', 'Feed [My Subscriptions]', 'feed_2');
+  $handler->override_option('relationships', array(
+    'group_nid' => array(
+      'label' => 'Group node (post)',
+      'required' => 1,
+      'id' => 'group_nid',
+      'table' => 'og_ancestry',
+      'field' => 'group_nid',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+    'uid' => array(
+      'label' => 'Subscriber',
+      'required' => 1,
+      'id' => 'uid',
+      'table' => 'notifications',
+      'field' => 'uid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'status' => array(
+      'operator' => '=',
+      'value' => 1,
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'current' => array(
+      'operator' => 'active',
+      'value' => '',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'current',
+      'table' => 'spaces',
+      'field' => 'current',
+      'relationship' => 'none',
+    ),
+    'update_type' => array(
+      'operator' => '=',
+      'value' => '',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'update_type',
+      'table' => 'node',
+      'field' => 'update_type',
+      'relationship' => 'none',
+    ),
+    'uid_current' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'uid_current',
+      'table' => 'users',
+      'field' => 'uid_current',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'uid',
+    ),
+  ));
+  $handler->override_option('style_plugin', 'rss_fields');
+  $handler->override_option('style_options', array(
+    'mission_description' => FALSE,
+    'description' => array(
+      'feed_description' => '',
+    ),
+    'fields' => array(
+      'title' => 'atrium_activity',
+      'description' => 'atrium_activity_teaser',
+      'link' => 'atrium_activity_path',
+      'author' => 'mail',
+      'dc:creator' => 'atrium_activity_user',
+      'category' => 'feature',
+      'guid' => 'atrium_activity_id',
+      'pubDate' => 'atrium_activity_timestamp',
+    ),
+    'georss' => array(
+      'lat' => '',
+      'lon' => '',
+      'featureName' => '',
+    ),
+  ));
+  $handler->override_option('row_plugin', '');
+  $handler->override_option('path', 'dashboard/feed/subscriptions');
+  $handler->override_option('menu', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('tab_options', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('displays', array());
+  $handler->override_option('sitename_title', FALSE);
   $translatables['oa_feeds_dashboard'] = array(
     t('Defaults'),
-    t('Feed'),
+    t('Feed [My Subscriptions]'),
+    t('Feed [Recent]'),
     t('No recent activity found.'),
     t('Recent activity'),
   );
