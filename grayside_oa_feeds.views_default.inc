@@ -854,6 +854,7 @@ function grayside_oa_feeds_views_default_views() {
       'relationship' => 'uid',
     ),
   ));
+  $handler->override_option('title', 'Recent activity by Subscription');
   $handler->override_option('style_plugin', 'rss_fields');
   $handler->override_option('style_options', array(
     'mission_description' => FALSE,
@@ -893,13 +894,14 @@ function grayside_oa_feeds_views_default_views() {
     'name' => 'navigation',
   ));
   $handler->override_option('displays', array());
-  $handler->override_option('sitename_title', FALSE);
+  $handler->override_option('sitename_title', 0);
   $translatables['oa_feeds_dashboard'] = array(
     t('Defaults'),
     t('Feed [My Subscriptions]'),
     t('Feed [Recent]'),
     t('No recent activity found.'),
     t('Recent activity'),
+    t('Recent activity by Subscription'),
   );
 
   $views[$view->name] = $view;
