@@ -16,7 +16,9 @@ function grayside_oa_feeds_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'tokenauth_pages';
-  $strongarm->value = 'dashboard/feed';
+  $strongarm->value = 'dashboard/feed*
+reader/feed*
+';
 
   $export['tokenauth_pages'] = $strongarm;
   $strongarm = new stdClass;
